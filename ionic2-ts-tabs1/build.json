@@ -1,0 +1,11 @@
+﻿{
+  "android": {
+    "release": {
+      "keystore": "C:\\Users\\mrtcn\\Desktop\\movieconnections-key.keystore",
+      "storePassword": "mrtcn.1907",
+      "alias": "muratcanT",
+      "password": "mrtcn.1907",
+      "keystoreType": ""
+    }
+  }
+}

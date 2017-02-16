@@ -1,0 +1,43 @@
+﻿<ion-content id="landing-content" padding center text-center>
+    <ion-grid id="landing-wrapper">
+        <ion-row center id="landing-top-section">
+            <ion-list no-lines>
+                <ion-item  center text-center>
+                    <img  src="assets/images/logo.png"/>
+                </ion-item>
+                <ion-item center text-center text-wrap>
+                    <h2>Welcome To Movie Connections</h2>
+                </ion-item>
+                <ion-item center text-center text-wrap>
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </ion-item>
+            </ion-list>            
+        </ion-row>
+        <ion-row center id="landing-bottom-section">
+            <ion-grid>
+                <ion-row>
+                    <ion-col width-100>
+                        <button block ion-button color="light" icon-left>
+                            <ion-icon name="logo-facebook"> </ion-icon>
+                            CONNECT WITH FACEBOOK
+                        </button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-45>
+                        <button block ion-button color="light" (click)="navigate(1)">SIGN UP</button>
+                    </ion-col>
+                    <ion-col width-45>
+                        <button block ion-button color="light" (click)="navigate(0)">LOGIN</button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button clear color="dark">SKIP</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-row>
+    </ion-grid>
+</ion-content>

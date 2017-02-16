@@ -1,0 +1,32 @@
+﻿#login-top-section{
+    font-size: 1.3rem;
+    -webkit-flex: 2;
+    flex: 2;
+}
+
+#login-top-section img {
+    width: 30px;
+    height: 30px;
+}
+
+#login-top-section h2{
+    font-size: 2.2rem;
+}
+
+#login-bottom-section{
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+#login-content{
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+}
+
+#login-wrapper{
+    height: 100%;
+}

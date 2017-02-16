@@ -1,0 +1,27 @@
+﻿#landing-top-section{
+    font-size: 1.3rem;
+    -webkit-flex: 2;
+    flex: 2;
+}
+
+#landing-top-section h2{
+    font-size: 2.2rem;
+}
+
+#landing-bottom-section{
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+#landing-content{
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+}
+
+#landing-wrapper{
+    height: 100%;
+}

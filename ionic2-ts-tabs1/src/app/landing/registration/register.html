@@ -1,0 +1,39 @@
+﻿<ion-header>
+    <ion-navbar>
+        <ion-title>Register</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div padding>
+        <img src="assets/images/logo.png" />
+    </div>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Full Name</ion-label>
+                <ion-input type="text" [(ngModel)]="registration.fullName" name="fullName" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>E-Mail</ion-label>
+                <ion-input type="text" [(ngModel)]="registration.email" name="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" [(ngModel)]="registration.userName" name="userName" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" [(ngModel)]="registration.password" name="password" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Password Confirm</ion-label>
+                <ion-input type="password" [(ngModel)]="registration.confirmPassword" name="confirmPassword" required></ion-input>
+            </ion-item>
+        </ion-list>
+        <div padding>
+            <button block ion-button color="light" icon-left type="submit" [disabled]="!registerForm.form.valid">
+                REGISTER
+            </button>
+        </div>
+    </form>
+</ion-content>
