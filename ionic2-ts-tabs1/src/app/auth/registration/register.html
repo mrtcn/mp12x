@@ -7,6 +7,7 @@
     <div padding>
         <img src="assets/images/logo.png" />
     </div>
+    
     <form (ngSubmit)="register()" #registerForm="ngForm">
         <ion-list>
             <ion-item>
@@ -34,6 +35,6 @@
             <button block ion-button color="light" icon-left type="submit" [disabled]="!registerForm.form.valid">
                 REGISTER
             </button>
-        </div>
+        </div>        
     </form>
 </ion-content>

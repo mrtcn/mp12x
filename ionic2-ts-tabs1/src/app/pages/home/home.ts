@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { ConnectionService } from '../../app/movie-connection/connection.service';
+import { ConnectionService } from '../../movie-connection/connection.service';
 
 import {
     SearchApiModel, MovieConnection,
     GameInitialize, UserSelections
-} from '../../app/movie-connection/connection.model';
+} from '../../movie-connection/connection.model';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/debounceTime';

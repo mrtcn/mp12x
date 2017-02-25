@@ -1,10 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, App } from 'ionic-angular';
 import { Facebook } from "ng2-cordova-oauth/core";
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
 import { AccountService } from '../shared/account.service';
-import { RegisterViewModel } from '../shared/account.model';
+import { LoginViewModel } from '../shared/account.model';
+import { TabsPage } from '../../pages/tabs/tabs';
 
 import {
     SearchApiModel, MovieConnection,
@@ -14,28 +15,27 @@ import {
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
-    selector: 'register',
-    templateUrl: 'register.html',
-    styleUrls: ['/register.scss'],
+    selector: 'login',
+    templateUrl: 'login.html',
+    styleUrls: ['/login.scss'],
     providers: [AccountService]
 })
 
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
+
+    public login: LoginViewModel = new LoginViewModel(null, null);
     private oauth: OauthCordova = new OauthCordova();
     private facebookProvider: Facebook = new Facebook({
         clientId: "604901223038328",
         appScope: ["email"]
     });
-
     private _result = new BehaviorSubject<boolean>(false);
     result = this._result.asObservable();
 
-    public registration: RegisterViewModel = new RegisterViewModel(null, null, null, null, null, );
-
-    constructor(public navCtrl: NavController, private platform: Platform, public accountService: AccountService) {
+    constructor(public navCtrl: NavController, private platform: Platform, private accountService: AccountService, private app: App) {
     }
 
-    ngOnInit() {                
+    ngOnInit() {
     }
     
     public facebook() {
@@ -51,17 +51,14 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    public register() {
-        let registrationModel: RegisterViewModel = new RegisterViewModel(this.registration.fullName,
-                                                                    this.registration.email,
-                                                                    this.registration.userName,
-                                                                    this.registration.password,
-                                                                    this.registration.confirmPassword);
-        let resultObservable = this.accountService.register(registrationModel);
-        resultObservable.subscribe(x => {
-            this._result.next(x.valueOf());
-        })
+    public loginSubmit() {
+        let loginModel = new LoginViewModel(this.login.userName, this.login.password);
+        this.accountService.login(loginModel).subscribe(x => {
+            let result: boolean = x.valueOf() != null;
+            this._result.next(result);
+        });
         
+        this.app.getRootNav().setRoot(TabsPage);
     }
 }
 

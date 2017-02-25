@@ -25,7 +25,7 @@ export class ConnectionService {
     getActors(body: Object): Observable<MovieConnection[]> {
         var bodyJson = JSON.stringify(body);
         var headers = new Headers({ 'Content-Type': 'application/json' });
-        var options = new RequestOptions({ headers: headers });
+        var options = new RequestOptions({ headers: headers });        
         return this.http.post(this.baseUrl + '/GetActors', bodyJson, options)
             .map((res: Response) => JSON.parse(res.json()));
     }

@@ -1,4 +1,5 @@
 ﻿import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../registration/register.component';
 
@@ -10,8 +11,10 @@ export class AuthenticationTabComponent {
     // should be each tab's root Page
     tabLogin: any;
     tabSignUp: any;
+    tabIndex: Number = 0;
 
-    constructor() {
+    constructor(private navCtrl: NavController, private params: NavParams) {
+        this.tabIndex = this.params.get("tabIndex");
         this.tabLogin = LoginComponent;
         this.tabSignUp = RegisterComponent;
     }

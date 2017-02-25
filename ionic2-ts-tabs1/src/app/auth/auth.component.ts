@@ -19,13 +19,13 @@ import 'rxjs/add/operator/debounceTime';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
-    selector: 'landing-page',
-    styleUrls: ['/landing.scss'],
-    templateUrl: 'landing.html',
+    selector: 'auth-page',
+    styleUrls: ['/auth.scss'],
+    templateUrl: 'auth.html',
     providers: [AccountService]
 })
 
-export class LandingComponent implements OnInit {
+export class AuthComponent implements OnInit {
     private oauth: OauthCordova = new OauthCordova();
     private facebookProvider: Facebook = new Facebook({
         clientId: "604901223038328",
@@ -38,12 +38,8 @@ export class LandingComponent implements OnInit {
     ngOnInit() {                
     }
 
-    public navigate(isRegister: boolean) {
-        if (isRegister) {
-            this.navCtrl.push(AuthenticationTabComponent);
-        } else {
-            this.navCtrl.push(AuthenticationTabComponent);
-        }
+    public navigate(tabIndex: boolean) {
+        this.navCtrl.push(AuthenticationTabComponent, { tabIndex: tabIndex });
     }
 
     public facebook() {
