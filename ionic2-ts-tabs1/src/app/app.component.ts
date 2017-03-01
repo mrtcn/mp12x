@@ -1,12 +1,14 @@
-import { Component, ViewChild }               from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { Component, ViewChild }             from '@angular/core';
+import { Platform, Nav, MenuController }    from 'ionic-angular';
+import { StatusBar, Splashscreen }          from 'ionic-native';
 
-import { UserInfo }                from './auth/shared/account.model';
-import { AccountService }          from './auth/shared/account.service';
+import { UserInfo }                         from './auth/shared/account.model';
+import { AccountService }                   from './auth/shared/account.service';
 
-import { TabsPage }                from './pages/tabs/tabs';
-import { AuthComponent }           from './auth/auth.component';
+import { HomePage }                         from './pages/home/home';
+import { AuthComponent }                    from './auth/auth.component';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,21 +18,29 @@ export class MyApp {
     @ViewChild(Nav) nav: Nav;
     rootPage: any = AuthComponent;
 
-    constructor(public platform: Platform, public accountService: AccountService) {
+    private _isAuthenticated = new BehaviorSubject<boolean>(false);
+    isAuthenticated = this._isAuthenticated.asObservable();
 
+    isAuthenticatedOutput: boolean = false;
+    xcz: boolean = false;
+    constructor(public platform: Platform, public accountService: AccountService, public menu: MenuController) {
+        console.log("constructor");
     }
 
     ngOnInit() {
+        console.log("onInit");
         this.platform.ready().then(() => {
 
             let userInfo: UserInfo;
             this.accountService.getUserInfo().subscribe(successResult => {
-                userInfo = successResult
+                userInfo = successResult;
+
+                this._isAuthenticated.next(successResult != null);
 
                 if (userInfo == null) {
-                    this.rootPage = AuthComponent;
+                    this.nav.setRoot(AuthComponent);
                 } else {
-                    this.rootPage = TabsPage;
+                    this.nav.setRoot(HomePage, { isAuthenticated: successResult != null });
                 }
             },
                 error => console.log(JSON.stringify(error)),
@@ -42,5 +52,10 @@ export class MyApp {
             StatusBar.styleDefault();
             Splashscreen.hide();
         });
+    }
+
+    eventChange(event) {
+        console.log("event = " + event);
+        this.xcz = event;
     }
 }

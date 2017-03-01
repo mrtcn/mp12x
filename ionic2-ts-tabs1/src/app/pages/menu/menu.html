@@ -1,0 +1,22 @@
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>Follow us on Twitter</ion-list-header>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            @ionicframework
+        </ion-item>
+        <ion-item>
+            <ion-icon name="cafe" item-left></ion-icon>
+            @VSCordovaTools
+        </ion-item>
+        <ion-item *ngIf="isAuthenticated">
+            <ion-icon name="cafe" item-left></ion-icon>
+            You are logged in!
+        </ion-item>
+        <ion-item *ngIf="!isAuthenticated">
+            <ion-icon name="cafe" item-left></ion-icon>
+            You are not logged in!
+        </ion-item>
+    </ion-list>
+</ion-content>

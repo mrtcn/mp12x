@@ -1,1 +1,6 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" >
+    <menu-content [isAuthenticated]="isAuthenticated | async"></menu-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
+<progressbar *ngIf="isAuthenticated | async" [isAuthenticated]="isAuthenticated"></progressbar>
+

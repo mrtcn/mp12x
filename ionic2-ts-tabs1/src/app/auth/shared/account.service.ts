@@ -14,6 +14,20 @@ export class AccountService {
 
     constructor(private http: Http) { }
 
+    public isAuthenticated(): Observable<boolean> {
+        //Get Token From LocalStorage
+        let localToken = localStorage.getItem("token");
+
+        let headers = new Headers();
+        headers.append("Authorization", "Bearer " + localToken);
+
+        let options = new RequestOptions({ headers: headers });
+        
+        return this.http.get(this.baseUrl + '/api/Account/UserInfo', options).map((res: Response) => {
+            return null != res.json();
+        });
+    }
+
     public getUserInfo(): Observable<UserInfo> {
         //Get Token From LocalStorage
         let localToken = localStorage.getItem("token");

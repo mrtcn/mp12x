@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ConnectionService } from '../../movie-connection/connection.service';
+import { AboutPage } from '../about/about';
 
 import {
     SearchApiModel, MovieConnection,
@@ -17,16 +18,18 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [ConnectionService]
+  providers: [ConnectionService]  
 })
 export class HomePage implements OnInit {
+    isAuthenticated: boolean;
+
     onGameLoad: boolean;
     searchTerm: string = '';
     searchTermModel: SearchApiModel;
     connectionSearchBox: FormControl;
     searching: any = false;
     isWin: boolean = false;
-    
+
     private _answer = new BehaviorSubject<number>(null);
     answer = this._answer.asObservable();
     
@@ -42,8 +45,8 @@ export class HomePage implements OnInit {
     private _userSelections = new BehaviorSubject<UserSelections>(null);
     userSelections = this._userSelections.asObservable();
 
-    constructor(public navCtrl: NavController, public connectionService: ConnectionService, private http: Http) {
-
+    constructor(public navCtrl: NavController, public connectionService: ConnectionService, private http: Http, private params: NavParams) {
+        this.isAuthenticated = this.params.get("isAuthenticated");
         this.onGameLoad = false;
         this.connectionSearchBox = new FormControl();
     }
@@ -113,6 +116,10 @@ export class HomePage implements OnInit {
             this.clearConnection();
             this.searchTerm = "";
         });
+    }
+
+    navigateToAbout() {
+        this.navCtrl.push(AboutPage);
     }
 
     onLink(url: string) {

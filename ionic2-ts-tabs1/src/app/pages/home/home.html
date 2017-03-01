@@ -1,7 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle end>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
 <ion-content padding>
 
-    <h2 class="center">Movie Connections</h2>
-
+    <!--<h2 class="center">Movie Connections</h2>-->
     <ion-list *ngIf="(gameInit | async)">
         <ion-item>
             {{(gameInit | async)?.BaseActorName}}            
@@ -14,7 +21,7 @@
         <ion-searchbar [disabled]="isWin" [formControl]="connectionSearchBox" [(ngModel)]="searchTerm" placeholder="Film Ara!" (ionInput)="searchConnection()" (ionClear)="clearConnection()"></ion-searchbar>
         <!--<div *ngIf="searching">-->
         <div *ngIf="searching" class="spinner-container">
-                <ion-spinner></ion-spinner>
+            <ion-spinner></ion-spinner>
         </div>
     </ion-toolbar>
     <ion-list *ngIf="onGameLoad">
@@ -32,15 +39,12 @@
             {{userSelection.MovieInfo.MovieName}} <br/>
         </ion-item>
     </ion-list>
-
+    <button (click)="navigateToAbout()" block ion-button color="light" icon-left type="button" >
+        About
+    </button>
     <ion-toolbar primary *ngIf="answer | async">
         <ion-icon *ngIf="(answer | async) === 1" name="checkmark" item-left>Right Answer</ion-icon>
         <ion-icon *ngIf="(answer | async) === 2" name="alert" item-left>Wrong Answer</ion-icon>
         <ion-icon *ngIf="(answer | async) === 3" name="done-all" item-left>You Win</ion-icon>
     </ion-toolbar>
-
 </ion-content>
-
-
-
-

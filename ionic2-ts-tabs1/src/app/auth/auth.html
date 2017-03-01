@@ -1,4 +1,11 @@
-﻿<ion-content id="landing-content" padding center text-center>
+﻿<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Account
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content id="landing-content" padding center text-center>
     <ion-grid id="landing-wrapper">
         <ion-row center id="landing-top-section">
             <ion-list no-lines>
@@ -34,7 +41,7 @@
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <button ion-button clear color="dark">SKIP</button>
+                        <button ion-button clear color="dark" (click)="navigate(2)">SKIP</button>
                     </ion-col>
                 </ion-row>
             </ion-grid>
