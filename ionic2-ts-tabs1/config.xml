@@ -96,4 +96,5 @@
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
   <preference name="Fullscreen" value="True" />
   <plugin name="cordova-plugin-inappbrowser" version="1.6.1" />
+  <preference name="android-targetSdkVersion" value="25" />
 </widget>

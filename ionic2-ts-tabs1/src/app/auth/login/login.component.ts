@@ -5,7 +5,7 @@ import { Facebook } from "ng2-cordova-oauth/core";
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
 import { AccountService } from '../shared/account.service';
 import { LoginViewModel } from '../shared/account.model';
-import { HomePage } from '../../pages/home/home';
+import { GamePage } from '../../pages/game/game';
 
 import {
     SearchApiModel, MovieConnection,
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
             this._result.next(result);
         });
         
-        this.app.getRootNav().setRoot(HomePage);
+        this.app.getRootNav().setRoot(GamePage);
     }
 }
 

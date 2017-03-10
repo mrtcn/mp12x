@@ -6,7 +6,7 @@ import { Facebook } from "ng2-cordova-oauth/core";
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
 import { AccountService } from './shared/account.service';
 import { AuthenticationTabComponent } from './authentication-tab/authentication-tab.component';
-import { HomePage } from '../pages/home/home';
+import { GamePage } from '../pages/game/game';
 
 import {
     SearchApiModel, MovieConnection,
@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
 
     public navigate(tabIndex: Number) {
         if (tabIndex === 2) {
-            this.navCtrl.setRoot(HomePage, { isAuthenticated: false });
+            this.navCtrl.setRoot(GamePage, { isAuthenticated: false });
             return;
         }
 

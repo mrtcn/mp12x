@@ -5,10 +5,10 @@ import { StatusBar, Splashscreen }          from 'ionic-native';
 import { UserInfo }                         from './auth/shared/account.model';
 import { AccountService }                   from './auth/shared/account.service';
 
-import { HomePage }                         from './pages/home/home';
+import { GamePage }                         from './pages/game/game';
 import { AuthComponent }                    from './auth/auth.component';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject }                  from 'rxjs/BehaviorSubject';
 
 @Component({
   templateUrl: 'app.html'
@@ -38,9 +38,9 @@ export class MyApp {
                 this._isAuthenticated.next(successResult != null);
 
                 if (userInfo == null) {
-                    this.nav.setRoot(AuthComponent);
+                    this.nav.push(AuthComponent);
                 } else {
-                    this.nav.setRoot(HomePage, { isAuthenticated: successResult != null });
+                    this.nav.push(GamePage, { isAuthenticated: successResult != null });
                 }
             },
                 error => console.log(JSON.stringify(error)),

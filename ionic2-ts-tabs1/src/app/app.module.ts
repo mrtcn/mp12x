@@ -1,4 +1,5 @@
-import { NgModule, ErrorHandler }                   from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { APP_CONFIG, AppConfig } from './app.config';
 import { IonicApp, IonicModule, IonicErrorHandler, MenuController } from 'ionic-angular';
 import { MyApp }                                    from './app.component';
 import { AuthModule }                               from './auth/auth.module';
@@ -23,6 +24,6 @@ import { MenuPage }                                 from './pages/menu/menu';
       ProgressbarPage,
       MenuPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, { provide: APP_CONFIG, useValue: AppConfig }]
 })
 export class AppModule {}

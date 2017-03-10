@@ -61,5 +61,12 @@ export class UserSelectionValidationResult {
     IsRightSelection: number;
 }
 
+export class PopcornInfoViewModel {
+    constructor(
+        public PopcornPoint: Number,
+        public Level: Number
+    ){}
+}
+
 
 
