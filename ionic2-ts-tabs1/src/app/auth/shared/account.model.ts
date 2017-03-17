@@ -28,10 +28,17 @@ export class LoginViewModel {
 
 export class UserInfo {
     constructor(
+        public Id: number,
+        public FirstName: string,
+        public LastName: string,
+        public UserName: string,
         public Email: string,
+        public ImagePath: string,
+        public PopcornPoint: number,
+        public Level: number,
         public HasRegistered: boolean,
         public LoginProvider: string
-    ) { }    
+    ) { }      
 }
 
 export class AccessTokenModel
@@ -41,5 +48,5 @@ export class AccessTokenModel
     public expires_in: string;
     public userName: string;
     public '.issued': string;
-    public '.expires': string
+    public '.expires': string;
 }

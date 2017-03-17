@@ -2,5 +2,5 @@
     <menu-content [isAuthenticated]="isAuthenticated | async"></menu-content>
 </ion-menu>
 <ion-nav #content [root]="rootPage"></ion-nav>
-<progressbar *ngIf="isAuthenticated | async" [isAuthenticated]="isAuthenticated"></progressbar>
+<progressbar *ngIf="isAuthenticated | async" [isAuthenticated]="isAuthenticated | async"></progressbar>
 

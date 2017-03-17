@@ -30,23 +30,15 @@ export class MyApp {
     ngOnInit() {
         console.log("onInit");
         this.platform.ready().then(() => {
-
-            let userInfo: UserInfo;
             this.accountService.getUserInfo().subscribe(successResult => {
-                userInfo = successResult;
-
                 this._isAuthenticated.next(successResult != null);
-
-                if (userInfo == null) {
-                    this.nav.push(AuthComponent);
-                } else {
-                    this.nav.push(GamePage, { isAuthenticated: successResult != null });
+                if (successResult != null) {
+                    this.nav.setRoot(GamePage, { isAuthenticated: true });
                 }
             },
                 error => console.log(JSON.stringify(error)),
                 () => console.log("Completed"));
             
-
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             StatusBar.styleDefault();

@@ -1,21 +1,47 @@
-<!--<ion-header>
+<ion-header>
   <ion-navbar>
     <ion-title>
       Profile
     </ion-title>
   </ion-navbar>
-</ion-header>-->
+</ion-header>
 
-<!--<ion-content>-->
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-    <ion-item>
-      <ion-icon name="cafe" item-left></ion-icon>
-      @VSCordovaTools
-    </ion-item>
-  </ion-list>
-<!--</ion-content>-->
+<ion-content>
+    <form [formGroup]="sampleForm" (ngSubmit)="changeUserInfoForm(sampleForm.value)">
+
+        <ion-input type="hidden" [hidden]="true" [(ngModel)]="Id" formControlName="Id"></ion-input>
+        <ion-input type="hidden" [hidden]="true" [(ngModel)]="HasRegistered" formControlName="HasRegistered"></ion-input>
+
+        <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="FirstName"  formControlName="FirstName" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="LastName"  formControlName="LastName" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="UserName" formControlName="UserName" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="Email" formControlName="Email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Popcorn Points</ion-label>
+            <ion-input type="text" [readonly]="true" [(ngModel)]="PopcornPoint" formControlName="PopcornPoint" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Level</ion-label>
+            <ion-input type="text" [readonly]="true" [(ngModel)]="Level" formControlName="Level" required></ion-input>
+        </ion-item>
+
+        <button ion-button type="submit">Save Changes</button>
+    </form>
+</ion-content>

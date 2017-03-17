@@ -1,11 +1,11 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { APP_CONFIG, AppConfig } from './app.config';
+import { NgModule, ErrorHandler }                                   from '@angular/core';
+import { APP_CONFIG, AppConfig }                                    from './app.config';
 import { IonicApp, IonicModule, IonicErrorHandler, MenuController } from 'ionic-angular';
-import { MyApp }                                    from './app.component';
-import { AuthModule }                               from './auth/auth.module';
-import { Page }                                     from './pages/pages.module';
-import { ProgressbarPage }                          from './pages/progressbar/progressbar';
-import { MenuPage }                                 from './pages/menu/menu';
+import { MyApp }                                                    from './app.component';
+import { AuthModule }                                               from './auth/auth.module';
+import { Page }                                                     from './pages/pages.module';
+import { ProgressbarPage }                                          from './pages/progressbar/progressbar';
+import { MenuPage }                                                 from './pages/menu/menu';
 
 @NgModule({
     declarations: [

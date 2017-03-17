@@ -40,6 +40,18 @@ export class AccountService {
         return this.http.get(this.baseUrl + '/api/Account/UserInfo', options).map((res: Response) => res.json());
     }
 
+    public updateUser(model: UserInfo): Observable<boolean> {
+        //Get Token From LocalStorage
+        let localToken = localStorage.getItem("token");
+
+        let updateJson = JSON.stringify(model);
+        let headers = new Headers({ "Content-Type": "application/json" });
+        headers.append("Authorization", "Bearer " + localToken);
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.baseUrl + '/api/Account/UpdateUserInfo', updateJson, options).map((res: Response) => JSON.parse(res.json()));
+    }
+
     public register(model: RegisterApiModel): Observable<boolean> {
         let registerJson = JSON.stringify(model);
         let headers = new Headers({ "Content-Type": "application/json" });

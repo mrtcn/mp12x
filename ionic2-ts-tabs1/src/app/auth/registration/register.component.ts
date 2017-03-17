@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, App } from 'ionic-angular';
 import { Facebook } from "ng2-cordova-oauth/core";
 import { OauthCordova } from 'ng2-cordova-oauth/platform/cordova';
 import { AccountService } from '../shared/account.service';
@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
     private _loginResult = new BehaviorSubject<boolean>(false);
     public loginResult = this._loginResult.asObservable();
 
-    public registration: RegisterViewModel = new RegisterViewModel(null, null, null, null, null, );
+    public registration: RegisterViewModel = new RegisterViewModel(null, null, null, null, null );
 
-    constructor(public navCtrl: NavController, private platform: Platform, public accountService: AccountService) {
+    constructor(public navCtrl: NavController, private platform: Platform, public accountService: AccountService, private app: App) {
     }
 
     ngOnInit() {                
@@ -71,12 +71,12 @@ export class RegisterComponent implements OnInit {
 
             let loginApiModel = new LoginViewModel(this.registration.userName, this.registration.password);
             let accessTokenObservable = this.accountService.login(loginApiModel);
-            accessTokenObservable.subscribe(y => {                
-                this._loginResult.next( y.valueOf() );
+            accessTokenObservable.subscribe(y => {
+                this._loginResult.next(y.valueOf());
             });
-        })
+        });
 
-        this.navCtrl.push(GamePage);
+        this.app.getRootNav().setRoot(GamePage);
 
     }
 }
